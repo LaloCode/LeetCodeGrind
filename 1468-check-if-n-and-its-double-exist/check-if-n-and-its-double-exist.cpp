@@ -1,17 +1,16 @@
 class Solution {
 public:
     bool checkIfExist(vector<int>& arr) {
-        unordered_set<double> lookup;
+        unordered_set<int> lookup;
 
         for(int i : arr) 
         {
-            if ((lookup.find(i*2) != lookup.end()) || lookup.find(double(i)/2.0) != lookup.end()) 
+            if ((lookup.count(i*2)) || (i%2 == 0 && lookup.count(i/2))) 
             {
-                printf("%d", i);
                 return true;
             }
 
-            lookup.insert(double(i));
+            lookup.insert(i);
         }
 
         return false;
